@@ -32,7 +32,7 @@ Development
 **Maintenance status: sporadically**
 
 **Why no further development?**
-This library has a long history and is used in many projects. This projects often do not document what version they use. Commiting changes maybe brake those old project and lead to bad experience (for beginners) and support request. For those reasons the library is in freeze mode. You can still commit typo, documentation or bug fixes.
+This library has a long history and is used in many projects. These projects often do not document what version they use. Commiting changes might break those old projects and lead to bad experiences (for beginners) and support requests. For these reasons the library is in freeze mode. You can still commit typo, documentation or bug fixes.
 
 
 .. _before buy:
@@ -71,7 +71,6 @@ What works and not?
   #. Communication with smart phone, not `supported by hardware`_.
   #. Card emulation, not `supported by hardware`_.
   #. Use of IRQ pin. But there is a proof-of-concept example.
-  #. With Arduino Yun see `#111 <https://github.com/miguelbalboa/rfid/issues/111>`_, not supported by software.
   #. With Intel Galileo (Gen2) see `#310 <https://github.com/miguelbalboa/rfid/issues/310>`__, not supported by software.
   #. Power reduction modes `#269 <https://github.com/miguelbalboa/rfid/issues/269>`_, not supported by software.
   #. I2C instead of SPI `#240 <https://github.com/miguelbalboa/rfid/issues/240>`_, not supported by software.
@@ -151,28 +150,30 @@ The following table shows the typical pin layout used:
 | SPI SCK   | SCK      | 13 / ICSP-3 | 52      | D13     | ICSP-3          | 15        | 1      | 21     | 13     |
 +-----------+----------+-------------+---------+---------+-----------------+-----------+--------+--------+--------+
 
-+-----------+---------------+
-|           | ESP8266       |
-|           +---------------+
-|           | Wemos D1 mini |
-+-----------+---------------+
-| Signal    | Pin           |
-+===========+===============+
-| RST/Reset | D3            |
-+-----------+---------------+
-| SPI SS    | D8            |
-+-----------+---------------+
-| SPI MOSI  | D7            |
-+-----------+---------------+
-| SPI MISO  | D6            |
-+-----------+---------------+
-| SPI SCK   | D5            |
-+-----------+---------------+
++-----------+---------------+---------+
+|           | ESP8266       | Arduino |
+|           +---------------+---------+
+|           | Wemos D1 mini | Yun [4]_|
++-----------+---------------+---------+
+| Signal    | Pin           | Pin     |
++===========+===============+=========+
+| RST/Reset | D3            | Pin9    |
++-----------+---------------+---------+
+| SPI SS    | D8            | Pin10   |
++-----------+---------------+---------+
+| SPI MOSI  | D7            | ICSP4   |
++-----------+---------------+---------+
+| SPI MISO  | D6            | ICSP1   |
++-----------+---------------+---------+
+| SPI SCK   | D5            | ICSP3   |
++-----------+---------------+---------+
 
 .. [1] Configurable, typically defined as RST_PIN in sketch/program.
 .. [2] Configurable, typically defined as SS_PIN in sketch/program.
 .. [3] The SDA pin might be labeled SS on some/older MFRC522 boards. 
+.. [4] Source: https://github.com/miguelbalboa/rfid/issues/111#issuecomment-420433658 .
 
+Important: If your micro controller supports multiple SPI interfaces, the library only uses the **default (first) SPI** of the Arduino framework.
 
 .. _hardware:
 Hardware
