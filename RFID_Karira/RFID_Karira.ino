@@ -2,7 +2,6 @@
   Created by  Rudy Schlaf for www.makecourse.com
   Updated     1/2020 by Kushagra Karira
 *******************************************/
-//** I Kushagra Karira has relesed this modified version of MFRC522 tutorial on Github (github.com/kushagrakarira/iota) as the source file for team iota, accessible after August 2020**//
 /*
   This sketch uses the MFRC522 Library to use ARDUINO RFID MODULE KIT 13.56 MHZ WITH TAGS SPI W AND R BY COOQROBOT.
   The library file MFRC522.h has a wealth of useful info. Please read it.
@@ -11,7 +10,7 @@
   Based on code Dr.Leong   ( WWW.B2CQSHOP.COM )
   Created by Miguel Balboa (circuitito.com), Jan, 2012.
   Rewritten by Søren Thing Andersen (access.thing.dk), fall of 2013
-  Updated by Kushagra Karira ( kushagrakarira.github.io )
+  Modified by Kushagra Karira ( kushagrakarira.github.io )
 
   This library has been released into the public domain.
 
@@ -59,7 +58,7 @@ void setup() {
 //an array with 16 bytes to be written into one of the 64 card blocks is defined
 //byte blockcontent[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};//all zeros. This can be used to delete a block.
 
-byte readbackblock[18];//This array is used for reading out a block. The MIFARE_Read method requires a buffer that is at least 18 bytes to hold the 16 bytes of a block.
+byte readbackblock[18]; //This array is used for reading out a block. The MIFARE_Read method requires a buffer that is at least 18 bytes to hold the 16 bytes of a block.
 
 
 void loop()
